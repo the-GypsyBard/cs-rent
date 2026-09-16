@@ -1,0 +1,9 @@
+{
+  "name": "igxe-personal-rental-manager",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=24.0.0"},
+  "scripts": {"start": "node src/server.mjs", "test": "node --test --test-isolation=none tests/*.test.mjs"},
+  "dependencies": {"playwright": "^1.58.0"}
+}
