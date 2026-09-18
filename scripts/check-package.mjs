@@ -1,0 +1,33 @@
+import { _electron as electron } from 'playwright';
+import { mkdir, writeFile,readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import assert from 'node:assert/strict';
+const dir=resolve('artifacts');await mkdir(dir,{recursive:true});
+const env={...process.env};delete env.ELECTRON_RUN_AS_NODE;
+const launchOptions={executablePath:resolve(process.env.CS_RENT_PACKAGE_EXE||'../release/win-unpacked/CS饰品平台-交互原型.exe'),args:[`--user-data-dir=${resolve('artifacts/package-check-profile-'+Date.now())}`],cwd:process.env.CS_RENT_PACKAGE_CWD||dir,env,timeout:30000};
+let app=await electron.launch(launchOptions);
+try{
+ const info=await app.evaluate(({app})=>({packaged:app.isPackaged,version:app.getVersion(),path:app.getAppPath()}));
+ assert.equal(info.packaged,true);
+ assert.equal(info.version,JSON.parse(await readFile('package.json','utf8')).version);
+ const page=await app.firstWindow();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.getByRole('heading',{name:'每一件饰品，都有迹可循。'}).waitFor();
+ const fresh=await page.evaluate(()=>window.desktop.data.get());assert.deepEqual(fresh.data.state,{assets:[],orders:[],wishes:[]});assert.equal(fresh.data.space,'personal');assert.equal((await page.evaluate(()=>window.desktop.steamdt.status())).configured,false);
+ if(await page.locator('html').getAttribute('data-theme')!=='dark')await page.getByRole('button',{name:'切换深色主题',exact:true}).click();await page.getByRole('navigation',{name:'主导航'}).getByRole('button',{name:'收藏室',exact:true}).click();
+ await page.waitForFunction(()=>[...document.querySelectorAll('.collection-sidebar .item-art img')].some(img=>img.complete&&img.naturalWidth>0));
+ const catalog=await page.evaluate(()=>window.desktop.catalog.get());assert.equal(catalog.snapshot.groups.filter(g=>g.kind==='knife').length,20);
+ await page.getByText('刀具 · 按刀型',{exact:true}).click();
+ await page.screenshot({path:resolve(dir,'15-packaged-knives-dark.png')});assert.deepEqual(errors,[]);
+ await page.waitForFunction(async()=>await window.desktop.preferences.getTheme()==='dark');
+ await page.evaluate(()=>localStorage.removeItem('cs-rent-theme'));
+ await app.close();
+ app=await electron.launch(launchOptions);
+ const reopened=await app.firstWindow();await reopened.getByRole('heading',{name:'每一件饰品，都有迹可循。'}).waitFor();
+ assert.equal(await reopened.locator('html').getAttribute('data-theme'),'dark');
+ await reopened.getByRole('button',{name:'切换浅色主题',exact:true}).click();
+ await reopened.waitForFunction(async()=>await window.desktop.preferences.getTheme()==='light');
+ await reopened.evaluate(()=>localStorage.setItem('cs-rent-theme','dark'));
+ await app.close();app=await electron.launch(launchOptions);
+ const light=await app.firstWindow();await light.getByRole('heading',{name:'每一件饰品，都有迹可循。'}).waitFor();
+ assert.equal(await light.locator('html').getAttribute('data-theme'),'light');
+ await writeFile(resolve(dir,'package-result.json'),JSON.stringify({passed:true,date:new Date().toISOString(),...info,errors,restartThemePreserved:true,diskPreferenceOverridesMissingOrStaleBrowserPreference:true},null,2));console.log('PASS: packaged executable launches from a different working directory; both themes persist across full restarts, including missing or stale browser preferences.');
+}finally{await app.close();}

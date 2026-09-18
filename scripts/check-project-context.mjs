@@ -1,0 +1,13 @@
+import {readFile} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const read=p=>readFile(p,'utf8');
+const pkg=JSON.parse(await read('package.json'));
+const context=await read('PROJECT_CONTEXT.md');
+assert.ok(context.includes('CURRENT_VERSION: '+pkg.version),'Update PROJECT_CONTEXT.md version and implementation status');
+assert.ok((await read('CHANGELOG.md')).includes('## '+pkg.version),'Add current changelog');
+assert.ok((await read('AGENTS.md')).includes('PROJECT_CONTEXT.md'));
+assert.equal(pkg.build.directories.output,'../release');
+const launch=await read('启动原型.cmd');assert.ok(launch.includes('%~dp0..\\release\\win-unpacked'));assert.ok(!launch.replaceAll('\r\n','').includes('\n'));
+for(const file of ['src/preload/index.ts','src/main/workspace-service.ts','src/renderer/src/pages/Settings.tsx'])assert.ok((await read(file)).includes(pkg.version),`Version mismatch: ${file}`);
+assert.ok(context.includes('多普勒收盘参考价不等于当前最低在售价'),'Keep quote semantics explicit in handoff');
+console.log(`PASS: project context, version ${pkg.version}, release path and launcher`);

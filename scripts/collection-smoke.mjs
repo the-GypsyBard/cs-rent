@@ -1,0 +1,91 @@
+import { _electron as electron } from 'playwright';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import assert from 'node:assert/strict';
+const bundled = JSON.parse(await readFile('src/shared/catalog-bundled.json','utf8'));
+const artifacts = resolve('artifacts'); await mkdir(artifacts,{recursive:true});
+const profile = resolve(`artifacts/collection-profile-${Date.now()}`); await mkdir(profile,{recursive:true});
+const env = {...process.env,CS_RENT_TEST_DEMO:'1',CS_RENT_TEST_DATA:profile}; delete env.ELECTRON_RUN_AS_NODE;
+const app = await electron.launch({ args:['out/main/index.js'], env });
+const page = await app.firstWindow(); page.setDefaultTimeout(12000);
+const errors=[]; page.on('pageerror',e=>errors.push(e.message));
+const nav=page.getByRole('navigation',{name:'主导航'});
+const go = name => nav.getByRole('button',{name,exact:true}).click();
+const choose = async(label,value) => {
+  await page.getByRole('dialog').getByLabel(label,{exact:true}).click();
+  await page.locator('.ant-select-item-option-content:visible').getByText(value,{exact:true}).click();
+};
+const knife=bundled.groups.find(g=>g.id==='knife-500');
+const fade=knife.members.find(s=>s.english==='★ Bayonet | Fade');
+const glove=bundled.groups.find(g=>g.id==='glove-gen-1').members[0];
+const add = async(s,version,wear) => {
+  await go('资产与收支'); await page.getByRole('button',{name:'新增记录',exact:true}).click();
+  const dialog=page.getByRole('dialog');
+  await dialog.getByLabel('选择商品',{exact:true}).fill(s.name);
+  await page.locator('.ant-select-item-option-content:visible').getByText(s.name,{exact:true}).click();
+  if(version!=='普通') await choose('版本',version);
+  await choose('外观等级',wear); await choose('取得方式','受赠');
+  await dialog.getByRole('button',{name:'保存记录',exact:true}).click(); await dialog.waitFor({state:'hidden'});
+};
+const knifePage = async()=>{await go('收藏室');await page.getByText('刀具 · 按刀型',{exact:true}).click();};
+try {
+  await app.evaluate(({ipcMain})=>{ipcMain.removeHandler('market:quote');ipcMain.handle('market:quote',()=>({ok:true,value:123456,source:'测试报价',updated:new Date().toISOString()}));});
+  await page.getByRole('heading',{name:'每一件饰品，都有迹可循。'}).waitFor();
+  await knifePage();
+  assert.equal(await page.locator('.collection-main').getByText(/StatTrak/).count(),0,'刀具未拥有计数版时无任何提示');
+  assert.equal(await page.getByTestId('collection-count').innerText(),'0 / 25');
+  await add(fade,'StatTrak™','略有磨损'); await knifePage();
+  assert.equal(await page.getByTestId('collection-count').innerText(),'1 / 25');
+  assert.match(await page.getByTestId(`finish-${fade.id}`).innerText(),/拥有 StatTrak™ · 略有磨损/);
+  await add(fade,'普通','崭新出厂'); await knifePage();
+  assert.equal(await page.getByTestId('collection-count').innerText(),'1 / 25','普通及计数双持不重复');
+  await page.screenshot({path:resolve(artifacts,'11-knives-light.png')});
+  // Disposal fixture exercises the same stored state contract as confirmed sale/gift actions.
+  await page.evaluate(async id=>{const {data:saved}=await window.desktop.data.get();for(const a of saved.state.assets)if(a.skinId===id&&a.version==='普通')a.status='已售出';await window.desktop.data.save(saved.state,saved.space);},fade.id);
+  await page.reload(); await knifePage();
+  assert.equal(await page.getByTestId('collection-count').innerText(),'1 / 25');
+  assert.match(await page.getByTestId(`finish-${fade.id}`).innerText(),/略有磨损/);
+  await page.evaluate(async id=>{const {data:saved}=await window.desktop.data.get();for(const a of saved.state.assets)if(a.skinId===id)a.status='已赠出';await window.desktop.data.save(saved.state,saved.space);},fade.id);
+  await page.reload(); await knifePage();
+  assert.equal(await page.getByTestId('collection-count').innerText(),'0 / 25');
+  assert.equal(await page.locator('.collection-main').getByText(/StatTrak/).count(),0);
+  await add(glove,'普通','久经沙场'); await go('收藏室'); await page.getByText('手套 · 按代数',{exact:true}).click();
+  assert.equal(await page.getByTestId('collection-count').innerText(),'1 / 24');
+  assert.equal(await page.locator('.collection-nav').count(),4);
+  await page.getByRole('button',{name:'切换深色主题',exact:true}).click();
+  await page.screenshot({path:resolve(artifacts,'12-gloves-dark.png')});
+  await page.locator('.collection-nav').last().click();
+  assert.equal(await page.getByText('此系列已自动收录；代数暂无可靠映射，先按来源分组展示。',{exact:true}).isVisible(),true);
+  await page.screenshot({path:resolve(artifacts,'13-new-gloves-dark.png')});
+  await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].setSize(1050,760));
+  await page.screenshot({path:resolve(artifacts,'14-collection-small.png')});
+  await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].setSize(1480,950));
+  const before = await page.evaluate(async()=>JSON.stringify((await window.desktop.data.get()).data.state));
+  // Real public download and real main-process persistence.
+  await page.getByRole('button',{name:'刷新目录',exact:true}).click();
+  await page.locator('.catalog-feedback').filter({hasText:/目录已检查|目录更新成功/}).waitFor({timeout:90000});
+  const disk=JSON.parse(await readFile(resolve(profile,'catalog-v1.json'),'utf8'));
+  assert.equal(disk.groups.length,118); assert.equal(await page.evaluate(async()=>JSON.stringify((await window.desktop.data.get()).data.state)),before);
+  // Deterministic future-update fixture, injected only into this test process.
+  const future=structuredClone(disk); future.groups.push({...future.groups.find(g=>g.id==='knife-500'),id:'knife-99999',name:'未来刀型测试',members:[{...fade,id:'skin-future',name:'未来刀型 | 新涂装',finishKey:'99999:new'}]});
+  await app.evaluate(({ipcMain},snapshot)=>{ipcMain.removeHandler('catalog:refresh');ipcMain.handle('catalog:refresh',()=>({ok:true,snapshot}));},future);
+  await page.getByRole('button',{name:'刷新目录',exact:true}).click(); await page.locator('.catalog-feedback').filter({hasText:'目录更新成功：新增 1 个分组、1 款涂装。'}).waitFor();
+  await page.getByText('刀具 · 按刀型',{exact:true}).click(); await page.getByRole('textbox',{name:'搜索收藏分组'}).fill('未来');
+  await page.locator('.collection-nav').click(); assert.equal(await page.getByTestId('collection-count').innerText(),'0 / 1');
+  await app.evaluate(({ipcMain})=>{ipcMain.removeHandler('catalog:refresh');ipcMain.handle('catalog:refresh',()=>({ok:false,error:'测试断网：已保留上次成功目录'}));});
+  await page.getByRole('button',{name:'刷新目录',exact:true}).click(); await page.locator('.catalog-feedback').filter({hasText:'测试断网：已保留上次成功目录'}).waitFor();
+  assert.equal(await page.getByTestId('collection-count').innerText(),'0 / 1');
+  await go('愿望单');await page.getByRole('button',{name:'添加愿望',exact:true}).first().click();
+  await page.getByRole('dialog').getByLabel('商品',{exact:true}).fill('未来刀型');
+  assert.equal(await page.locator('.ant-select-item-option-content:visible').getByText('未来刀型 | 新涂装',{exact:true}).count(),1);
+  await page.locator('.ant-select-item-option-content:visible').getByText('未来刀型 | 新涂装',{exact:true}).click();
+  await choose('外观','崭新出厂');
+  await page.getByRole('dialog').getByLabel('目标买入价（人民币元）',{exact:true}).fill('100');
+  await page.getByRole('dialog').getByRole('button',{name:'保存愿望',exact:true}).click();
+  await page.getByRole('dialog').waitFor({state:'hidden'});
+  assert.equal(await page.locator('.wish-card').getByText('未来刀型 | 新涂装',{exact:true}).count(),1);
+  assert.deepEqual(errors,[]);
+  await writeFile(resolve(artifacts,'collection-smoke-result.json'),JSON.stringify({passed:true,date:new Date().toISOString(),profile,revision:disk.revision,checks:['刀具默认隐藏计数版','仅计数版计入一次','双版本去重','出售和赠出回算','最佳磨损回退','手套代数与未知新系列','明暗主题和窄窗','真实手动下载及持久化','刷新不改账本','未来刀型和涂装自动出现','新增商品进入愿望单','刷新失败保留当前视图'],errors},null,2));
+  console.log('PASS: collection interactions, real catalog refresh and future-update/error fixtures');
+}catch(e){await page.screenshot({path:resolve(artifacts,'collection-failure.png')});await writeFile(resolve(artifacts,'collection-failure.txt'),await page.locator('body').innerText());throw e;}
+finally{await app.close();}

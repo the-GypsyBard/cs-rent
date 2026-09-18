@@ -5,3 +5,9 @@ data/
 .env
 .env.*
 !.env.example
+out/
+dist/
+release/
+artifacts/
+.tools/
+*.tsbuildinfo

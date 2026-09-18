@@ -1,0 +1,503 @@
+[
+  {
+    "id": "collection-set-community-2",
+    "name": "凤凰武器箱",
+    "type": "武器箱",
+    "image": "./art/collection-set-community-2.png",
+    "source": "ByMykel/CSGO-API · 2026-09-18 本地验证快照",
+    "members": [
+      {
+        "id": "skin-ad06f39c3d8b",
+        "name": "UMP-45 | 下士",
+        "english": "UMP-45 | Corporal",
+        "image": "./art/skin-ad06f39c3d8b.png",
+        "rarity": "#4b69ff",
+        "stattrak": true,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLkk4a0qB1Y-s27ZbRSI_-BHmiCwOJJvOhuRz39wUUi4W6Bzdipd3KWOwInXJFyTbEKuhbtloHlMbzm5AbW2YkWzSv5jjQJsHiIsauxOw"
+      },
+      {
+        "id": "skin-bf1fcaf8bccb",
+        "name": "Negev | 地形",
+        "english": "Negev | Terrain",
+        "image": "./art/skin-bf1fcaf8bccb.png",
+        "rarity": "#4b69ff",
+        "stattrak": true,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_m5Hl6x1I_82gbaNoNs-HG3WB_vpzovNoRieMmRQguynLz4qgJyqWOg8iDZFyFOcD40axlYflNL7htgDb2thNmH6oinkc5yZt4fFCD_QbgNa1nA"
+      },
+      {
+        "id": "skin-4b1f4693e6df",
+        "name": "Tec-9 | 沙尘暴",
+        "english": "Tec-9 | Sandstorm",
+        "image": "./art/skin-4b1f4693e6df.png",
+        "rarity": "#4b69ff",
+        "stattrak": true,
+        "wears": [
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wiFO0Oara_1SM_GdCnSEzvx7j-1gSCGn2xsi52XSyIqueCifOAMnD8YkQ-YMtUPpwIK2N-jq4QSK2ohCm36q239XrnE8IX2h_4o"
+      },
+      {
+        "id": "skin-31a620b2b0c6",
+        "name": "MAG-7 | 天堂守卫",
+        "english": "MAG-7 | Heaven Guard",
+        "image": "./art/skin-31a620b2b0c6.png",
+        "rarity": "#4b69ff",
+        "stattrak": true,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8n5G3wiFO0P-vb_NSKPWSGGKe_uJ_t-l9AXm1zEol52_cz9z9d3rDb1J0DZdwFOMLtxa4m4W2Zejn5ALc2NhFzyTgznQeMWQmjgI"
+      },
+      {
+        "id": "skin-4ef0fd14ae8f",
+        "name": "MAC-10 | 炽热",
+        "english": "MAC-10 | Heat",
+        "image": "./art/skin-4ef0fd14ae8f.png",
+        "rarity": "#8847ff",
+        "stattrak": true,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8n5WxrR1Y-s2jaac8cM-BC2OYzvpJvOhuRz39xR5w4GzUyo6pdnuUawMpWJokTLUL50K6l9XiNO7i4lGKiYsRxCv6jTQJsHim4lDW8g"
+      },
+      {
+        "id": "skin-205233b2ccee",
+        "name": "SG 553 | 脉冲",
+        "english": "SG 553 | Pulse",
+        "image": "./art/skin-205233b2ccee.png",
+        "rarity": "#8847ff",
+        "stattrak": true,
+        "wears": [
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLimcO1qx1Y-s29b_E4c8-DG2uDxNF6ueZhW2eykUh24jjczYqscH7GblIpCJBxF-AD4BHtxIKzM-nq5ACK3t1GyySskGoXuRyAaawM"
+      },
+      {
+        "id": "skin-8737ccb056e6",
+        "name": "FAMAS | 中士",
+        "english": "FAMAS | Sergeant",
+        "image": "./art/skin-8737ccb056e6.png",
+        "rarity": "#8847ff",
+        "stattrak": true,
+        "wears": [
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL3n5vh7h1a4c2oaalsM8-ACXOvzedxuPUnF3HmkBx_tjnSmNmrJHiROFN1W8NxFrFZsxbrk4e0Yuvr5wWLi4JAyjK-0H3maOk52Q"
+      },
+      {
+        "id": "skin-9180ab4b5f86",
+        "name": "USP-S | 守护者",
+        "english": "USP-S | Guardian",
+        "image": "./art/skin-9180ab4b5f86.png",
+        "rarity": "#8847ff",
+        "stattrak": true,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLkjYbf7itX6vytbbZSI-WsG3SA_ut6teZoQT2MmRQguynLyd76I32fbFUkD5EmRu4Ct0O4m9fmY-zlsQSMiN9CnHj2jitL531o4fFCD_TZrkjVNw"
+      },
+      {
+        "id": "skin-91a429af4a60",
+        "name": "AK-47 | 红线",
+        "english": "AK-47 | Redline",
+        "image": "./art/skin-91a429af4a60.png",
+        "rarity": "#d32ce6",
+        "stattrak": true,
+        "wears": [
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwlcK3wiFO0POlPPNSI_-RHGavzedxuPUnFniykEtzsWWBzoyuIiifaAchDZUjTOZe4RC_w4buM-6z7wzbgokUyzK-0H08hRGDMA"
+      },
+      {
+        "id": "skin-91abb2db43b7",
+        "name": "P90 | 三角",
+        "english": "P90 | Trigon",
+        "image": "./art/skin-91abb2db43b7.png",
+        "rarity": "#d32ce6",
+        "stattrak": true,
+        "wears": [
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLhx8bf_jdk_6v-V7B_KfecAFicyOl-pK9vGi3nlEt24GnSwoypc3rFbQ52XsN0EOFcshfuwYa1NbzktVTZ3ohN02yg2RSFidN_"
+      },
+      {
+        "id": "skin-064fed483cd7",
+        "name": "Nova | 古董",
+        "english": "Nova | Antique",
+        "image": "./art/skin-064fed483cd7.png",
+        "rarity": "#d32ce6",
+        "stattrak": true,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL_kYDhwiFO0PyhfqVSIf6HB3aFxNF6ueZhW2fmwRwl6jyHw96vIn2UbVVzXMdyRuYLt0O7ltPjZbu0tQTejo9Hyn2skGoXucYtjcOH"
+      },
+      {
+        "id": "skin-bb633c21fc25",
+        "name": "AWP | 二西莫夫",
+        "english": "AWP | Asiimov",
+        "image": "./art/skin-bb633c21fc25.png",
+        "rarity": "#eb4b4b",
+        "stattrak": true,
+        "wears": [
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwiYbf_jdk7uW-V6V-Kf2cGFidxOp_pewnF3nhxEt0sGnSzN76dH3GOg9xC8FyEORftRe-x9PuYurq71bW3d8UnjK-0H0YSTpMGQ"
+      },
+      {
+        "id": "skin-370dfd3911e0",
+        "name": "AUG | 变色龙",
+        "english": "AUG | Chameleon",
+        "image": "./art/skin-370dfd3911e0.png",
+        "rarity": "#eb4b4b",
+        "stattrak": true,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwi5Hf_jdk7uepV6dlIf2WAmKfz-9_ouRWQyC0nQlpt23VztercCjGbg90C8RyQOcMs0G5x93uZLm37wbe2owTz3j9iShI6TErvbi7ZmzWCw"
+      }
+    ]
+  },
+  {
+    "id": "collection-set-stmarc",
+    "name": "圣马克镇收藏品",
+    "type": "地图收藏品",
+    "image": "./art/collection-set-stmarc.png",
+    "source": "ByMykel/CSGO-API · 2026-09-18 本地验证快照",
+    "members": [
+      {
+        "id": "skin-985b9e77b38c",
+        "name": "MP5-SD | 竹林",
+        "english": "MP5-SD | Bamboo Garden",
+        "image": "./art/skin-985b9e77b38c.png",
+        "rarity": "#b0c3d9",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsPz-R1T9s2saalvL_-sHXOdwPx1j-1gSCGn200k5mzWyd-tcX2RbwYjW5dyQ7YIsxi_kdfvY7mztQSP2o5Mnn_4hntXrnE8gm_uARc"
+      },
+      {
+        "id": "skin-adc9de003296",
+        "name": "MAC-10 | 冲浪木",
+        "english": "MAC-10 | Surfwood",
+        "image": "./art/skin-adc9de003296.png",
+        "rarity": "#b0c3d9",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8n5WxrR1I_826f61qM8-RC2aTydF6ueZhW2eww0omsGuGmd2oIH_BPVNxCcMjE7EC4Bnul9KzMenj4wPajY1FmXj-kGoXuac9-lER"
+      },
+      {
+        "id": "skin-d1fdc1f566f3",
+        "name": "PP-Bizon | 海鸟",
+        "english": "PP-Bizon | Seabird",
+        "image": "./art/skin-d1fdc1f566f3.png",
+        "rarity": "#b0c3d9",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLzl4zv8x1I4M2vebFsH-OHA2aCwtF6ueZhW2exxhh-6mWHnI76dn2Sb1MiDsFyQbFZsELtxNTmMerg4VDd2YxAyiqtkGoXuSVM9Bwl"
+      },
+      {
+        "id": "skin-cec820187789",
+        "name": "Sawed-Off | 丛林灌木",
+        "english": "Sawed-Off | Jungle Thicket",
+        "image": "./art/skin-cec820187789.png",
+        "rarity": "#b0c3d9",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLin4Hl-S1d6c29eJt9IfyeMWCCxOt4j-1gSCGn2xhztj6Bn97_dnzBaQAoA5ciE-8PukG6k9fhZOi34gOPit9BxSz7hytXrnE8FOcrcRs"
+      },
+      {
+        "id": "skin-7c123868ae50",
+        "name": "M249 | 丛林",
+        "english": "M249 | Jungle",
+        "image": "./art/skin-7c123868ae50.png",
+        "rarity": "#b0c3d9",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8zMK5wjFU0Pi7ZqNhJc-fB2CY1aB3tbI4S3ngl04ktj7XnNb7InvCOgAlC5Z4Q7ID4RHqlNDgZOPj4Qzdlcsbmsfre7St"
+      },
+      {
+        "id": "skin-b0cfd706f37d",
+        "name": "P90 | 日落百合",
+        "english": "P90 | Sunset Lily",
+        "image": "./art/skin-b0cfd706f37d.png",
+        "rarity": "#5e98d9",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLhx8bf7jJk7f6hZ6lSL-KSAGCV_uJ_t-l9AX3klxl_5mzQmN34dXLDaAd0XJYmROIJsUHswdzuYe7ktgzfit1DmS_gznQesD3mhjI"
+      },
+      {
+        "id": "skin-2da1ee3a50e4",
+        "name": "M4A4 | 暗色绽放",
+        "english": "M4A4 | Dark Blossom",
+        "image": "./art/skin-2da1ee3a50e4.png",
+        "rarity": "#5e98d9",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8ypexwjFL0PC7bJtvLOWWMWuZxuZi_rZsSi3rzRlwtmjVy4yheHzGa1V0DcF5RO4JsxO-x9C1ZenqtFbW2d1bjXKpi8Drf9k"
+      },
+      {
+        "id": "skin-846a8107f0ed",
+        "name": "XM1014 | 香蕉叶",
+        "english": "XM1014 | Banana Leaf",
+        "image": "./art/skin-846a8107f0ed.png",
+        "rarity": "#5e98d9",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLpk8ewrHZk5-uRZKFsJs-UHGKVz9F6ueZhW2e3zRlxsTvVzdqpdy6eOwF0X8ciQOcD5hjqwNLmNu7isQHfjY1Cz3mvkGoXuYSrXADo"
+      },
+      {
+        "id": "skin-f7f3908427ad",
+        "name": "Tec-9 | 锈叶",
+        "english": "Tec-9 | Rust Leaf",
+        "image": "./art/skin-f7f3908427ad.png",
+        "rarity": "#5e98d9",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLlm5W5wjFL0P6raaJSL-KSAGCV_uJ_t-l9AXnhxUxz5mXSmd2sJ3yfagAjDJp4EeReuxHqwNfnY-O0tQSPjINNz3rgznQeAmDb9hs"
+      },
+      {
+        "id": "skin-5a552bf64f59",
+        "name": "UMP-45 | 日间百合",
+        "english": "UMP-45 | Day Lily",
+        "image": "./art/skin-5a552bf64f59.png",
+        "rarity": "#4b69ff",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLkk4a0qB1T9s2sZKtiLc-BC2OvzedxuPUnGHDmxEl-5mWGzYysdiifP1dzDZMmQe9ZsBnrl9yzZOPrtQTaj9lAxDK-0H1hFDwwPA"
+      },
+      {
+        "id": "skin-4644eea45e85",
+        "name": "Five-SeveN | 绯红之花",
+        "english": "Five-SeveN | Crimson Blossom",
+        "image": "./art/skin-4644eea45e85.png",
+        "rarity": "#4b69ff",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL3l4Dl7idN6vyRYL1SIuWXMXWVxdF6ueZhW2ewkE5162rRnNerIy6WagApDptyRuVZshbql9DuMOPj71CI2YoRzyqokGoXufqVyZvA"
+      },
+      {
+        "id": "skin-99182adaafd6",
+        "name": "MP7 | 蓝色绽放",
+        "english": "MP7 | Teal Blossom",
+        "image": "./art/skin-99182adaafd6.png",
+        "rarity": "#4b69ff",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8jsHf7jJk7eeqV6N_JfWdMWuZxuZi_uAwTnC1zE1zsWTSy936di-fb1AnCMYlTeINsBbrm9S1Mr7r5gKLi9lbjXKpdi5Lf9g"
+      },
+      {
+        "id": "skin-5b9bb3d791e6",
+        "name": "FAMAS | 日落",
+        "english": "FAMAS | Sundown",
+        "image": "./art/skin-5b9bb3d791e6.png",
+        "rarity": "#4b69ff",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL3n5vh7h1I_82-aahgH-OGAHSV1dF6ueZhW2frzEQhsWrRzNqoIHjCbgR1C5ZxRuIPsUO9l9XiYrnh7lPdj90Uni__kGoXuWBgr_h1"
+      },
+      {
+        "id": "skin-7684f58afc31",
+        "name": "SSG 08 | 海洋花纹",
+        "english": "SSG 08 | Sea Calico",
+        "image": "./art/skin-7684f58afc31.png",
+        "rarity": "#8847ff",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLijZGwpR1T9s2oZKt6JeKAMXSEzO9ks95lRi67gVMl5DuEm9ereCmVawImWZMhRLIDu0a7ktKzN7nq5lePi41Bn3r83H8b8G81tNArbz2X"
+      },
+      {
+        "id": "skin-f78ee5dc6e7e",
+        "name": "Glock-18 | 合成叶",
+        "english": "Glock-18 | Synth Leaf",
+        "image": "./art/skin-f78ee5dc6e7e.png",
+        "rarity": "#8847ff",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL2kpnj9h1T9s2ibaVrH_KfG2KvzedxuPUnGnuywx4h52nQzomsInmVbw8mCZAhR-UP4BHpldXhZevn7wXc2dkUnjK-0H1CafWWiA"
+      },
+      {
+        "id": "skin-05b6726350df",
+        "name": "AUG | 午夜百合",
+        "english": "AUG | Midnight Lily",
+        "image": "./art/skin-05b6726350df.png",
+        "rarity": "#8847ff",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwi5Hf_C9k7f6hZ6lSIvyGC1icyOl-pK8-FnDrlE8k62uAytipeSqRaFcoC8BwQbIM5xjtwdWzMr6ztAPd2YNA02yg2RS7P3lf"
+      },
+      {
+        "id": "skin-b85595a826a7",
+        "name": "MP9 | 野百合",
+        "english": "MP9 | Wild Lily",
+        "image": "./art/skin-b85595a826a7.png",
+        "rarity": "#d32ce6",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyL8js_f_jdk4uL3V61-LPGdCliWzeFkse1WQyC0nQlp4WuHz4mpcCrDZ1QhCcR5FrUJtkK9lNPuYezh4gDf2ItNxCr8iypJujErvbjAJv0dlg"
+      },
+      {
+        "id": "skin-921a5a81c48a",
+        "name": "AK-47 | 野荷",
+        "english": "AK-47 | Wild Lotus",
+        "image": "./art/skin-921a5a81c48a.png",
+        "rarity": "#eb4b4b",
+        "stattrak": false,
+        "wears": [
+          "Factory New",
+          "Minimal Wear",
+          "Field-Tested",
+          "Well-Worn",
+          "Battle-Scarred"
+        ],
+        "sourceImage": "https://community.akamai.steamstatic.com/economy/image/i0CoZ81Ui0m-9KwlBY1L_18myuGuq1wfhWSaZgMttyVfPaERSR0Wqmu7LAocGIGz3UqlXOLrxM-vMGmW8VNxu5Dx60noTyLwlcK3wiFO0POlV61-LPGdCliWzeFkse1WQyC0nQlpsDuGyt-pdnyRPA4hDcYkR-QPuhi-wdPuYbyx5AaMidkQnC_-2ilIuzErvbi4ijV5Mw"
+      }
+    ]
+  }
+]

@@ -1,9 +1,60 @@
 {
-  "name": "igxe-personal-rental-manager",
-  "version": "0.1.0",
+  "name": "cs-rent-desktop",
+  "version": "0.8.0",
   "private": true,
-  "type": "module",
-  "engines": {"node": ">=24.0.0"},
-  "scripts": {"start": "node src/server.mjs", "test": "node --test --test-isolation=none tests/*.test.mjs"},
-  "dependencies": {"playwright": "^1.58.0"}
+  "description": "CS 饰品平台 · 首轮交互验收原型",
+  "main": "out/main/index.js",
+  "author": "the-GypsyBard",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "dev:web": "vite --config vite.web.config.ts --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run check:project && npm run typecheck && electron-vite build",
+    "start": "electron out/main/index.js",
+    "test": "vitest run",
+    "test:ui": "npm run build && node scripts/smoke.mjs",
+    "package:dir": "npm run build && electron-builder --dir",
+    "package:win": "npm run build && electron-builder --win nsis",
+    "check:project": "node scripts/check-project-context.mjs"
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^6.1.0",
+    "antd": "6.6.4",
+    "echarts": "6.1.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "^4.1.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "electron": "44.4.2",
+    "electron-builder": "26.15.3",
+    "electron-vite": "5.0.0",
+    "playwright": "^1.63.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.0",
+    "vitest": "^3.2.0"
+  },
+  "build": {
+    "appId": "com.gypsybard.csrent.prototype",
+    "productName": "CS饰品平台-交互原型",
+    "directories": {
+      "output": "../release"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "deleteAppDataOnUninstall": false,
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  }
 }

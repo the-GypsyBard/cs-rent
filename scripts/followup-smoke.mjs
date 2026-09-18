@@ -1,0 +1,43 @@
+import {_electron as electron} from 'playwright';
+import {mkdir,writeFile} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import assert from 'node:assert/strict';
+const profile=resolve(`artifacts/followup-profile-${Date.now()}`);await mkdir(profile,{recursive:true});
+const env={...process.env,CS_RENT_TEST_DEMO:'1',CS_RENT_TEST_DATA:profile};delete env.ELECTRON_RUN_AS_NODE;
+const app=await electron.launch({args:['out/main/index.js'],env});const page=await app.firstWindow();page.setDefaultTimeout(15000);
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+const go=name=>page.getByRole('navigation',{name:'主导航'}).getByRole('button',{name,exact:true}).click();
+const shot=name=>page.screenshot({path:resolve(`artifacts/${name}.png`),animations:'disabled'});
+try{
+  await page.getByRole('heading',{name:'每一件饰品，都有迹可循。'}).waitFor();
+  await page.evaluate(async()=>{
+    const {data:saved}=await window.desktop.data.get();const base=saved.state.orders.find(o=>o.assetId);
+    saved.state.orders=[{...base,id:'earlier',type:'出租',status:'已完成',settledAt:'2026-08-01',amount:125},{...base,id:'current',type:'出租',status:'已完成',settledAt:'2026-09-03',amount:235}];await window.desktop.data.save(saved.state,saved.space);
+  });await page.reload();
+  await page.locator('.rental-income-panel').getByText('自定义',{exact:true}).click();
+  await page.getByRole('textbox',{name:'租金开始日期'}).fill('2026-09-01');await page.getByRole('textbox',{name:'租金结束日期'}).fill('2026-09-05');
+  assert.match(await page.getByTestId('rental-total').innerText(),/2\.35/);assert.match(await page.getByTestId('rental-opening').innerText(),/1\.25/);assert.match(await page.getByTestId('rental-cumulative-total').innerText(),/3\.60/);
+  await page.getByRole('region',{name:'累计租赁收入'}).scrollIntoViewIfNeeded();await shot('30-cumulative-light');
+  await page.getByRole('button',{name:'切换深色主题',exact:true}).click();await shot('31-cumulative-dark');
+  await go('愿望单');
+  await app.evaluate(({shell})=>{globalThis.openedLinks=[];shell.openExternal=async url=>{globalThis.openedLinks.push(url);};});
+  const card=page.locator('.wish-card').first();await card.locator('.wish-item-image').click();
+  await page.waitForFunction(()=>!document.querySelector('.wish-item-image:disabled'));
+  await card.locator('.wish-item-name').click();await page.waitForFunction(()=>!document.querySelector('.wish-item-name:disabled'));
+  const urls=await app.evaluate(()=>globalThis.openedLinks);
+  assert.equal(urls.length,2);assert.equal(urls[0],urls[1]);assert.equal(decodeURIComponent(urls[0]),'https://www.steamdt.com/cs2/AK-47 | Wild Lotus (Factory New)');
+  await page.getByRole('button',{name:'编辑AK-47 | 野荷',exact:true}).click();const dialog=page.getByRole('dialog');
+  assert.match(await page.getByTestId('float-range').innerText(),/皮肤磨损范围：0–1/);
+  await dialog.getByLabel('磨损下限',{exact:true}).fill('0.0000123400');await dialog.getByLabel('磨损上限',{exact:true}).fill('0.001');await shot('32-fine-float-dark');
+  await dialog.getByRole('button',{name:'保存愿望',exact:true}).click();await dialog.waitFor({state:'hidden'});
+  await page.reload();await go('愿望单');await page.getByRole('button',{name:'编辑AK-47 | 野荷',exact:true}).click();
+  assert.equal(await dialog.getByLabel('磨损下限',{exact:true}).inputValue(),'0.0000123400');await dialog.getByRole('button',{name:/^取\s*消$/}).click();
+  await page.getByRole('button',{name:'编辑AK-47 | 红线',exact:true}).click();assert.match(await page.getByTestId('float-range').innerText(),/皮肤磨损范围：0.1–0.7/);
+  await dialog.getByLabel('磨损下限',{exact:true}).fill('0.001');await dialog.getByRole('button',{name:'保存愿望',exact:true}).click();
+  await page.getByText('磨损值须在 0.1–0.15 之间（外观上界不含）',{exact:true}).waitFor();assert.equal(await dialog.isVisible(),true);
+  await dialog.getByRole('button',{name:/^取\s*消$/}).click();
+  await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].setSize(1050,760));await shot('33-wishlist-small-dark');
+  assert.deepEqual(errors,[]);
+  await writeFile('artifacts/followup-smoke-result.json',JSON.stringify({passed:true,date:new Date().toISOString(),checks:['期初租金与期间租金累计','每日与累计双图','浅色和深色','愿望单图片与名称精确 SteamDT URL','高精度磨损保存重载','按皮肤与外观交集拒绝越界','1050px窗口'],urls,errors},null,2));
+  console.log('PASS: cumulative chart, SteamDT item links, float bounds and precision.');
+}catch(e){await shot('followup-failure');await writeFile('artifacts/followup-failure.txt',await page.locator('body').innerText());throw e;}finally{await app.close();}

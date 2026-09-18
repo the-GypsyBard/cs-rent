@@ -1,0 +1,15 @@
+import {listPackage,extractFile} from '@electron/asar';
+import {readFile,writeFile,stat} from 'node:fs/promises';
+import {resolve} from 'node:path';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+const asar=resolve('../release/win-unpacked/resources/app.asar');
+const paths=listPackage(asar).map(p=>p.replaceAll('\\','/'));
+assert.ok(paths.every(p=>p==='/package.json'||p==='/out'||p.startsWith('/out/')),'Only application build files belong in the package');
+assert.ok(!paths.some(p=>/steamdt-credentials|steamdt-base-cache|workspace-v2|before-restore|preferences\.json|art-sources\.json|\/docs\/|\/归档\/|\/artifacts\//.test(p)));
+assert.ok(paths.includes('/out/main/index.js'));assert.ok(paths.includes('/out/preload/index.js'));assert.ok(paths.includes('/out/renderer/index.html'));assert.ok(paths.some(p=>p.startsWith('/out/renderer/art/')&&p.endsWith('.png')));
+const packageJson=JSON.parse(extractFile(asar,'package.json').toString());assert.equal(packageJson.version,JSON.parse(await readFile('package.json','utf8')).version);
+const installer=resolve(`../release/CS饰品平台-交互原型 Setup ${packageJson.version}.exe`);const bytes=await readFile(installer);assert.equal(bytes.subarray(0,2).toString(),'MZ');
+const launcher=await readFile('启动原型.cmd');assert.ok(!launcher.toString().replaceAll('\r\n','').includes('\n'),'Launcher must retain CRLF');
+const report={passed:true,date:new Date().toISOString(),version:packageJson.version,asarFiles:paths.length,localArtFiles:paths.filter(p=>p.startsWith('/out/renderer/art/')&&p.endsWith('.png')).length,allowed:['out/**/*','package.json'],excluded:['个人账本','API密钥','行情缓存','备份','浏览器缓存','docs','归档脚本','素材来源清单'],installer:{path:installer,bytes:(await stat(installer)).size,sha256:createHash('sha256').update(bytes).digest('hex')},launcherCRLF:true};
+await writeFile('artifacts/runtime-audit.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));
